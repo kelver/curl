@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aviações</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css'>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="mail-box">
+        <div class="inbox-head col-md-12">
+            <form action="#" class="">
+                <div class="form-group col-md-6">
+                    <label for="flight-origin-hp-flight">Voo de</label>
+                    <input value="Cuiabá, Brasil (CGB-Aeroporto Internacional Marechal Rondon)" name="flight-origin-hp-flight" aria-autocomplete="list" aria-owns="typeaheadDataPlain" autocomplete="off" class="clear-btn-input gcw-storeable text gcw-origin gcw-required gcw-distinct-locations col-md-12" data-gcw-field-type="origem" data-gcw-storeable-name="gcw-origin" data-js-theme="autocomplete" data-lob="FLIGHTS" data-locale="pt_BR" data-mask="95" data-minchar="1" data-provide="utypeahead" data-tooltip-id="typeaheadDataPlain" data-version="v4" data-airport_code_element="flight-origin-hp-flight-airport_code" data-hotel_id_element="flight-origin-hp-flight-hotel_id" data-lat_long_element="flight-origin-hp-flight-lat_long" data-region_id_element="flight-origin-hp-flight-region_id" data-region_type_element="flight-origin-hp-flight-region_type" data-station_code_element="flight-origin-hp-flight-station_code" data-point_of_supply_element="flight-origin-hp-flight-point_of_supply" data-city_element="flight-origin-hp-flight-city" data-country_code_element="flight-origin-hp-flight-country_code" data-category_element="flight-origin-hp-flight-category" data-heds_element="flight-origin-hp-flight-heds" data-search_name_element="flight-origin-hp-flight-search_name" data-ta_element="flight-origin-hp-flight-ta" id="flight-origin-hp-flight" placeholder="Cidade ou aeroporto" spellcheck="false" type="text">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="flight-destination-hp-flight">Voo para</label>
+                    <input value="Campo Grande, Brasil (CGR-Aeroporto Internacional de Campo Grande)" name="flight-destination-hp-flight" aria-autocomplete="list" aria-owns="typeaheadDataPlain" autocomplete="off" class="clear-btn-input gcw-storeable text gcw-destination gcw-required gcw-distinct-locations col-md-12" data-dest="true" data-gcw-field-type="destino" data-pairedinputid="flight-origin-hp-flight" data-gcw-storeable-name="gcw-destination" data-js-theme="autocomplete" data-lob="FLIGHTS" data-locale="pt_BR" data-mask="95" data-minchar="1" data-provide="utypeahead" data-tooltip-id="typeaheadDataPlain" data-version="v4" data-airport_code_element="flight-destination-hp-flight-airport_code" data-hotel_id_element="flight-destination-hp-flight-hotel_id" data-lat_long_element="flight-destination-hp-flight-lat_long" data-region_id_element="flight-destination-hp-flight-region_id" data-region_type_element="flight-destination-hp-flight-region_type" data-station_code_element="flight-destination-hp-flight-station_code" data-point_of_supply_element="flight-destination-hp-flight-point_of_supply" data-city_element="flight-destination-hp-flight-city" data-country_code_element="flight-destination-hp-flight-country_code" data-category_element="flight-destination-hp-flight-category" data-heds_element="flight-destination-hp-flight-heds" data-search_name_element="flight-destination-hp-flight-search_name" data-ta_element="flight-destination-hp-flight-ta" id="flight-destination-hp-flight" placeholder="Cidade ou aeroporto" spellcheck="false" type="text">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="flight-departing-hp-flight">Ida</label>
+                    <input id="flight-departing-hp-flight" class="col-md-12 datetimepicker" placeholder="dd/mm/aaaa" data-gcw-date-format="dd/mm/yyyy" autocomplete="off" data-min-range-length="0" data-gcw-storeable-name="gcw-start-date" data-gcw-field-type="data de ida" name="starDate" type="text">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="flight-returning-hp-flight">Volta</label>
+                    <input id="flight-returning-hp-flight" class="col-md-12 datetimepicker" placeholder="dd/mm/aaaa" data-gcw-date-format="dd/mm/yyyy" autocomplete="off" data-gcw-storeable-name="gcw-end-date" data-gcw-field-type="data de volta" name="endDate" type="text">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="flight-adults-hp-flight">Adultos (+18)</label>
+                    <select id="flight-adults-hp-flight" name="flight-adults-hp-flight" class="col-md-12" data-gcw-storeable-name="gcw-num-adults-1" autocomplete="off">
+                        <option value="1" selected="selected">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="flight-children-hp-flight">Crianças (0-17 anos)</label>
+                    <select id="flight-children-hp-flight" name="flight-children-hp-flight" class="col-md-12" data-gcw-storeable-name="gcw-num-children-1" data-gcw-toggled-field-class="gcw-child-field" data-gcw-toggled-field-parent-class="room-data" data-gcw-toggled-element-by-value="flight-children-help-hp-flight,0" autocomplete="off">
+                        <option value="0" selected="selected">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-2 pull-right">
+                    <button class="btn btn-primary btn-block" type="button" id="send">Buscar</button>
+                </div>
+            </form>
+        </div>
+        <div class="inbox-body">
+        <div class="mail-option">
+            <table class="table table-inbox table-hover dados">
+                <thead>
+                    <tr class="unread">
+                        <td class="view-message">Aviação</td>
+                        <td class="view-message">Saída - Chegada <small>(Ida)</small></td>
+                        <td class="view-message">Saída - Chegada <small>(Volta)</small></td>
+                        <td class="view-message">Tempo de Vôo</td>
+                        <td class="view-message">Origem - Destino</td>
+                        <td class="view-message">Preço <small>(Ida e Volta)</small></td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+        <div class="text-center">
+            <div class="col-md-6 col-md-offset-3">Criado por Kelver Machado</div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="assets/js/script.js"></script>
+</html>

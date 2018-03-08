@@ -19,53 +19,57 @@ jQuery(document).ready(function($){
             data: vData,
             beforeSend: function(){
                 $('.box').css('display', 'block');
+                $('.tituloSentido').css('display', 'none');
+                $('.dadosIda .dadosVolta').empty();
             },
             success: function(data) {
                 var obj = $.parseJSON(data);
-                var index = [];
-                $.each(obj.content.offers, function(i, item) {
-                    var ida = item.legIds[0];
-                    var volta = item.legIds[1];
+                $.each(obj, function(i, item) {
+                    $.each(item.Trechos, function(i, it) {
+                        $.each(it.Voos, function(i, v) {
+                            var html = '';
+                            if(v.Sentido == 'Ida') {
+                                var horaEm = v.Embarque.split(' ');
+                                var horaDe = v.Desembarque.split(' ');
 
-                    var airportCodeOrigem = item.naturalKey.split('-coach-', 2);
-                    var airportCodeOrigem = airportCodeOrigem['1'].split('-', 1);
+                                html += '<tr style="margin: 5px 0;">';
+                                html += '<td class="view-message" style="line-height: 75px;">' + v.Companhia + '</td>';
+                                html += '<td class="view-message" style="line-height: 75px;">' + horaEm[1] + ' - ' + horaDe[1] + '</td>';
+                                html += '<td class="view-message" style="line-height: 75px;">Duração: ' + v.Duracao + '</td>';
+                                html += '<td class="view-message" style="line-height: 75px;">' + v.Origem + ' - ' + v.Destino + '</td>';
+                                html += '<td align="center">';
+                                html += '<table class="table"><tr><td><b>Preço</b><br>' + ((typeof v.Valor.Total != 'undefined') && (v.Valor.Total != '')) ? v.Valor.Total.toLocaleString("pt-BR", {style: "currency", currency: "BRL"}) : '' + '</td>';
+                                html += '<td><b>Milhas</b><br>' + v.Milhas.Total.toLocaleString("pt-BR");
+                                +'</td></tr></table>';
+                                html += '</td></tr>';
+                                $('.dadosIda').append(html);
+                            }
+                        });
+                        $.each(it.Voos, function(i, vt) {
+                            var htmlv = '';
+                            if(vt.Sentido == 'Volta') {
+                                var horaEm = vt.Embarque.split(' ');
+                                var horaDe = vt.Desembarque.split(' ');
 
-                    var airportCodeChegada = item.naturalKey.split(';', 2);
-                    airportCodeChegada = airportCodeChegada[1].split('-coach-', 2);
-                    airportCodeChegada = airportCodeChegada[1].split('-', 1);
-
-                    $.each(obj.content.legs, function(i, ob) {
-                        var html = '';
-                        if((ida == ob.identity.naturalKey) && (ob.departureLocation.airportCode == airportCodeOrigem[0].toUpperCase())) {
-                            html += '<tr><td class="view-message"><b>Ida</b></td>';
-                            html += '<td class="view-message">' + ob.carrierSummary.airlineName +'</td>';
-                            html += '<td class="view-message">' + ob.departureTime.time + ' - ' + ob.arrivalTime.time + '</td>';
-                            html += '<td class="view-message">Duração: ' + ob.duration.hours + ':' + ob.duration.minutes + '</td>';
-                            html += '<td class="view-message">' + ob.departureLocation.airportCode + ' - ' + ob.arrivalLocation.airportCode + '</td>';
-                            html += '<td class="view-message" rowspan="2" align="center"><b>Preço</b><br>' + ob.price.formattedPrice + '</td>';
-                            html += '</tr>';
-                            html += '<tr id="volta' + volta + '"></tr>';
-                            $('.dados').append(html);
-                        }
-                    });
-                    $.each(obj.content.legs, function(i, obV) {
-                        var htmlV = '';
-                        if((volta == obV.identity.naturalKey) && (obV.departureLocation.airportCode == airportCodeChegada[0].toUpperCase())) {
-                            htmlV += '<td class="view-message"><b>Volta</b></td>';
-                            htmlV += '<td class="view-message">' + obV.carrierSummary.airlineName +'</td>';
-                            htmlV += '<td class="view-message">' + obV.departureTime.time + ' - ' + obV.arrivalTime.time + '</td>';
-                            htmlV += '<td class="view-message">Duração: ' + obV.duration.hours + ':' + obV.duration.minutes + '</td>';
-                            htmlV += '<td class="view-message">' + obV.departureLocation.airportCode + ' - ' + obV.arrivalLocation.airportCode + '</td>';
-
-                            $('#volta'+volta).append(htmlV);
-                            $('#volta'+volta).attr('id', 'volta'+volta+'ok');
-                            console.log(htmlV);
-                        }
+                                htmlv += '<tr style="margin: 5px 0;">';
+                                htmlv += '<td class="view-message" style="line-height: 75px;">' + vt.Companhia + '</td>';
+                                htmlv += '<td class="view-message" style="line-height: 75px;">' + horaEm[1] + ' - ' + horaDe[1] + '</td>';
+                                htmlv += '<td class="view-message" style="line-height: 75px;">Duração: ' + vt.Duracao + '</td>';
+                                htmlv += '<td class="view-message" style="line-height: 75px;">' + vt.Origem + ' - ' + vt.Destino + '</td>';
+                                htmlv += '<td align="center">';
+                                htmlv += '<table class="table"><tr><td><b>Preço</b><br>' + vt.Valor.Total.toLocaleString("pt-BR", {style: "currency", currency: "BRL"}) + '</td>';
+                                htmlv += '<td><b>Milhas</b><br>' + vt.Milhas.Total.toLocaleString("pt-BR");
+                                +'</td></tr></table>';
+                                htmlv += '</td></tr>';
+                                $('.dadosVolta').append(htmlv);
+                            }
+                        });
                     });
                 });
             },
             complete: function(){
                 $('.box').css('display', 'none');
+                $('.tituloSentido').css('display', 'block');
             },
         });
 

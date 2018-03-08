@@ -393,6 +393,10 @@ ul {
     animation-iteration-count: infinite;
 }
 
+.tituloSentido{
+    display: none;
+}
+
 @keyframes pulsate {
     0% {
         transform: scale(.1);

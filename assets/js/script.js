@@ -38,7 +38,7 @@ jQuery(document).ready(function($){
                                 html += '<td class="view-message" style="line-height: 75px;">Duração: ' + v.Duracao + '</td>';
                                 html += '<td class="view-message" style="line-height: 75px;">' + v.Origem + ' - ' + v.Destino + '</td>';
                                 html += '<td align="center">';
-                                html += '<table class="table"><tr><td><b>Preço</b><br>' + ((typeof v.Valor.Total != 'undefined') && (v.Valor.Total != '')) ? v.Valor.Total.toLocaleString("pt-BR", {style: "currency", currency: "BRL"}) : '' + '</td>';
+                                html += '<table class="table"><tr><td><b>Preço</b><br>' + v.Valor.Total.toLocaleString("pt-BR", {style: "currency", currency: "BRL"} + '</td>';
                                 html += '<td><b>Milhas</b><br>' + v.Milhas.Total.toLocaleString("pt-BR");
                                 +'</td></tr></table>';
                                 html += '</td></tr>';

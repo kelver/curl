@@ -5,7 +5,8 @@
  * Date: 06/03/18
  * Time: 03:26
  */
-
+set_time_limit(240);
+ini_set('max_execution_time', 240);
 ini_set('display_errors',1);
 ini_set('display_startup_erros',1);
 error_reporting(E_ALL);
